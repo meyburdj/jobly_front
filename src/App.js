@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import { BrowserRouter } from "react-router-dom";
 import './App.css';
 import RoutesList from './RoutesList';
@@ -6,7 +5,7 @@ import Navigation from './Navigation';
 import { useState, useEffect, forwardRef } from "react";
 import userContext from "./userContext";
 import JoblyApi from './api';
-import { TextField, Button, LinearProgress } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import jwt_decode from "jwt-decode";
@@ -80,13 +79,13 @@ function App() {
  * updateProfile function makes api call to "/users/:username".
  */
   async function updateProfile(data) {
-    const { username, firstName, lastName, email } = (await 
+    const { username, firstName, lastName, email } = (await
       JoblyApi.updateUser(data));
 
     setUser(curr => ({
-      username, 
-      firstName, 
-      lastName, 
+      username,
+      firstName,
+      lastName,
       email,
       applications: curr.applications
     }));
@@ -102,21 +101,21 @@ function App() {
     setToken(null);
     localStorage.removeItem('joblyToken');
   }
-  
+
   /**
    * applyToJob function that sends the id of cliked-on job to the server and
    * "applies" the current user to that job. updates user state accordingly.
    */
   async function applyToJob(jobId) {
     const appliedJobId = await JoblyApi.sendApplicationRequest({
-      jobId, 
+      jobId,
       username: user.username
     });
 
     setUser(curr => ({
       ...curr,
       applications: [...curr.applications, appliedJobId]
-    }))
+    }));
   }
 
   /******** SNACKBAR START *******/
@@ -126,7 +125,7 @@ function App() {
     if (reason === 'clickaway') {
       return;
     }
-    setToast(curr => ({...curr, open: false}));
+    setToast(curr => ({ ...curr, open: false }));
   };
 
   const Alert = forwardRef(function Alert(props, ref) {
@@ -142,10 +141,10 @@ function App() {
       <userContext.Provider value={{ user }}>
         <BrowserRouter>
           <Navigation logout={logout} />
-          <RoutesList 
-            login={login} 
-            signup={signup} 
-            updateProfile={updateProfile} 
+          <RoutesList
+            login={login}
+            signup={signup}
+            updateProfile={updateProfile}
             applyToJob={applyToJob}
           />
         </BrowserRouter>

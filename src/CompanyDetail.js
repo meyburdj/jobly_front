@@ -12,7 +12,7 @@ import { LinearProgress } from "@mui/material";
  * RouteList -> CompanyDetail -> JobCardList
  * 
  */
-function CompanyDetail({applyToJob}) {
+function CompanyDetail({ applyToJob }) {
     const [company, setCompany] = useState({
         data: null,
         isLoading: true,
@@ -29,7 +29,7 @@ function CompanyDetail({applyToJob}) {
             });
         }
         getCompanyReally();
-    }, []);
+    }, [handle]);
 
     if (company.isLoading) return <p><LinearProgress /></p>;
 
@@ -37,7 +37,7 @@ function CompanyDetail({applyToJob}) {
         <div className="CompanyDetail">
             <h2>{company.data.name}</h2>
             <h4 style={{ color: "gray" }}>{company.data.description}</h4>
-            <JobCardList jobs={company.data.jobs} applyToJob={applyToJob}/>
+            <JobCardList jobs={company.data.jobs} applyToJob={applyToJob} />
         </div>
     );
 };

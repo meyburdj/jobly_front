@@ -6,7 +6,7 @@ import CompanyDetail from "./CompanyDetail.js";
 import LoginForm from "./LoginForm.js";
 import SignupForm from "./SignupForm";
 import Profile from "./Profile.js";
-import NotFound from "./NotFound.js";
+// import NotFound from "./NotFound.js";
 import { Container } from "@mui/system";
 import { useContext } from "react";
 import userContext from "./userContext.js";
