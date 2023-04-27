@@ -159,6 +159,20 @@ class JoblyApi {
 
         return res.applied;
     }
+
+    /**
+     * Gets applied jobs for the provided user
+     * 
+     * @param {string} username - user's username
+     * @returns array of job objects
+     */
+    static async getUserAppliedJobs(username) {
+        const res = await this.request(`users/${username}/jobs`);
+
+        return res.jobs;
+    }
 }
+
+
 
 export default JoblyApi;
