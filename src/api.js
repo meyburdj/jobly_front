@@ -1,8 +1,8 @@
 import axios from "axios";
 
 // const BASE_URL = process.env.REACT_APP_BASE_URL || "joblybackend-production.up.railway.app";
-const BASE_URL = "http://localhost:3001";
-// const BASE_URL = "https://joblybackend-production.up.railway.app";
+// const BASE_URL = "http://localhost:3001";
+const BASE_URL = "https://joblybackend-production.up.railway.app";
 
 /** API Class.
  *
