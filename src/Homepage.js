@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import userContext from "./userContext";
+import ApplicationList from "./ApplicationList";
 
 function Homepage() {
     const { user } = useContext(userContext);
@@ -23,7 +24,7 @@ function Homepage() {
     return (
         <>
             {user ? (
-                <p>Welcome {user.username}!</p>
+                <ApplicationList />
             ) : (
                 <div style={containerStyle}>
                     <img

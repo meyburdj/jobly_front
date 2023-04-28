@@ -1,7 +1,8 @@
 import axios from "axios";
 
 // const BASE_URL = process.env.REACT_APP_BASE_URL || "joblybackend-production.up.railway.app";
-const BASE_URL = "https://joblybackend-production.up.railway.app";
+const BASE_URL = "http://localhost:3001";
+// const BASE_URL = "https://joblybackend-production.up.railway.app";
 
 /** API Class.
  *
@@ -159,6 +160,20 @@ class JoblyApi {
 
         return res.applied;
     }
+
+    /**
+     * Gets applied jobs for the provided user
+     * 
+     * @param {string} username - user's username
+     * @returns array of job objects
+     */
+    static async getUserAppliedJobs(username) {
+        const res = await this.request(`users/${username}/jobs`);
+
+        return res.jobs;
+    }
 }
+
+
 
 export default JoblyApi;
