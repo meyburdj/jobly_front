@@ -18,7 +18,7 @@ function ApplicationList() {
             setJobs({
                 isLoading: false
             });;
-    }, []);
+    }, [user]);
 
     async function getApplications(username) {
         const response = await JoblyApi.getUserAppliedJobs(username);
