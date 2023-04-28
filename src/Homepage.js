@@ -1,26 +1,9 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import userContext from "./userContext";
-import JobCardList from "./JobCardList";
-import JoblyApi from "./api";
+import ApplicationList from "./ApplicationList";
 
 function Homepage() {
     const { user } = useContext(userContext);
-    const [jobs, setJobs] = useState({
-        data: null,
-        isLoading: true,
-    });
-    useEffect(function getJobApplications() {
-        getApplications(user.username);
-    }, []);
-
-    async function getApplications(username) {
-        const response = await JoblyApi.getUserAppliedJobs(username);
-        setJobs({
-            data: response,
-            isLoading: false
-        });
-    }
-
     const containerStyle = {
         display: "flex",
         alignItems: "center",
@@ -41,8 +24,7 @@ function Homepage() {
     return (
         <>
             {user ? (
-                <JobCardList jobs={jobs.data}></JobCardList>
-                // <p>Welcome {user.username}!</p>
+                <ApplicationList />
             ) : (
                 <div style={containerStyle}>
                     <img
